@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class AuthService {
     Map<Integer,String> UserToken;
@@ -16,6 +17,11 @@ public class AuthService {
             if (entry.getValue()==email && entry.getKey()== id)
                 return true;
         return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Adi"+ ThreadLocalRandom.current().nextInt(100, 299 + 1)+"@gmail.com");
+
     }
 
 }
