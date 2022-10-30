@@ -1,7 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
-public class AuthService {
+public class AuthService implements AuthController {
     Map<Integer,String> UserToken;
 
     public AuthService() {
@@ -18,4 +19,22 @@ public class AuthService {
         return false;
     }
 
+    public static void main(String[] args) {
+
+    }
+
+    @Override
+    public String getEmail() {
+        return null;
+    }
+
+    @Override
+    public String password() {
+        return null;
+    }
+
+    @Override
+    public boolean validateRequest(String email, String password) {
+        return false;
+    }
 }
