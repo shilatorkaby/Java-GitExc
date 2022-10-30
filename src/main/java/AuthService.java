@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class AuthService {
+public class AuthService implements AuthController {
     Map<Integer,String> UserToken;
 
     public AuthService() {
@@ -20,8 +20,21 @@ public class AuthService {
     }
 
     public static void main(String[] args) {
-        System.out.println("Adi"+ ThreadLocalRandom.current().nextInt(100, 299 + 1)+"@gmail.com");
 
     }
 
+    @Override
+    public String getEmail() {
+        return null;
+    }
+
+    @Override
+    public String password() {
+        return null;
+    }
+
+    @Override
+    public boolean validateRequest(String email, String password) {
+        return false;
+    }
 }
