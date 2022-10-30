@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Java-GitExc" target="19" />
+      <module name="Java-GitExc" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>
