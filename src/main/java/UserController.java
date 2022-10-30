@@ -6,7 +6,7 @@ public interface UserController {
 
     public static void makeLoginToUser(String email, int password) {
         loginAuth(email, password);
-
+// need to do login auth in auth controller / service
 
     }
 }
