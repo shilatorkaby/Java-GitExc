@@ -1,3 +1,4 @@
+//Neeed to get a token from Auth Service
 public class User {
 int id;
 String email;
@@ -10,4 +11,5 @@ String name;
         this.password = password;
         this.name = name;
     }
+
 }
