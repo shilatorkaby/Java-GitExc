@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class ProjectRandom {
-<<<<<<< HEAD
         Faker faker = new Faker();
 
         String getRandomName(){return faker.name().firstName();};
@@ -15,13 +14,11 @@ public class ProjectRandom {
         String getRandomEmail(){return(faker.name().firstName()+ ThreadLocalRandom.current().nextInt(100, 299 + 1)+"@gmail.com");}
 
 
-
     IdNumber getRandomId(){return faker.idNumber();}
 
         public String getFirstName() {
             return faker.name().firstName();
         }
-=======
 
     static int counter = 0;
     static ArrayList<Integer> list = new ArrayList<Integer>();
@@ -53,7 +50,6 @@ public class ProjectRandom {
         counter++;
         return num;
     }
->>>>>>> master
 
     }
 
