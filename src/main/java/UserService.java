@@ -3,7 +3,6 @@
 //Can delete a user - via UserService
 public class UserService implements UserController {
 
-
     String loginToUser(String email, String password) {
         //get token (after validation) from auth-service by password and email
         return "token"; //return token
