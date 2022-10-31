@@ -7,35 +7,38 @@ class User {
 ProjectRandom random;
 final Integer id;
 String email;
-String password;
 String name;
+String password;
 
     public User(String email, String password, String name) {
-        this.id= getRandomId();
-        this.email = getRandomEmail();
+        this.id = random.generateNum();
+        this.email = email;
         this.password = password;
         this.name = name;
     }
     public User(String password, String name) {
-        this.id= getRandomId();
-        this.email = getRandomEmail();
+        this.id= random.generateNum();
+        this.email = random.getRandomEmail();
         this.password = password;
         this.name = name;
     }
+    public User(String email) {
+        this.id= random.generateNum();
+        this.email = email;
+        this.password = random.getRandomPassword();
+        this.name = random.getRandomName();
+        getPassword();
+    }
 
-
-        String getRandomEmail(){return(name+ ThreadLocalRandom.current().nextInt(100, 999)+"@gmail.com");}
-
-        Integer getRandomId(){return (ThreadLocalRandom.current().nextInt(100000000, 99999999));}
 
         public String getFirstName() {
             return name;
         }
 
-    String getPassword(){return password;}
-    String getEmail(){return email;}
-    String getName(){return name;}
-    Integer getId(){return id;}
+    String getPassword(){return this.password;}
+    String getEmail(){return this.email;}
+    String getName(){return this.name;}
+    Integer getId(){return this.id;}
     void setPassword(String password){this.password=password;}
     void setEmail(String email){this.email=email;}
     void setName(String name){this.name=name;}
