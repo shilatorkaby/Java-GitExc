@@ -3,14 +3,15 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class AuthService implements AuthController {
-    Map<Integer,String> UserToken;
+    Map<Integer,String> UserToken; //move to userRepository
 
     public AuthService() {
         UserToken = new HashMap<>();
     }
     //create user in user repository
 
-    //Validates user details when logging in
+    //Validates user details after logging in
+    //change boolean to return token (string)
     boolean validateLogin(String email,Integer id)
     {
         for (Map.Entry<Integer,String> entry : UserToken.entrySet())
