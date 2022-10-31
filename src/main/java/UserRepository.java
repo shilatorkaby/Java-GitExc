@@ -8,10 +8,12 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 //email, name , password
 
 public class UserRepository {
+    Map<Integer,String> tokens =new HashMap<>();
     public static void writeToFile(String email,String name, String password) {
 
         // create a writer
