@@ -2,9 +2,6 @@
 //Can update user data (email/name/password) - via UserService
 //Can delete a user - via UserService
 public class UserService implements UserController {
-    public void makeNewUser(String email, String password, String name) {
-        User user = new User(email, password, name);
-    }
 
 
     String loginToUser(String email, String password) {
@@ -31,6 +28,24 @@ public class UserService implements UserController {
     @Override
     public void deleteUser(String email, String password) {
 
+    }
+
+    @Override
+    public void makeNewUser() {
+
+    }
+
+    @Override
+    public void makeNewUser(String email, String name, String password) {
+        User user = new User(email, password, name);
+    }
+    @Override
+    public void makeNewUser(String name, String password) {
+        User user = new User(password, name);
+    }
+    @Override
+    public void makeNewUser(String email) {
+        User user = new User(email);
     }
 }
 
