@@ -7,11 +7,8 @@ public class UserService implements UserController {
         //get token (after validation) from auth-service by password and email
         return "token"; //return token
     }
-
     @Override
     public void updateEmail(String email,String token) {
-
-
     }
 
     @Override
