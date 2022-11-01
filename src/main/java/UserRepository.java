@@ -2,14 +2,14 @@ import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
+import static com.sun.management.HotSpotDiagnosticMXBean.ThreadDumpFormat.JSON;
 //email, name , password
 
 public  class UserRepository {
@@ -24,13 +24,11 @@ public  class UserRepository {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         // create customer object
         customer = new JsonObject();
         customer.put("email", email);
         customer.put("name", name);
         customer.put("password", password);
-
         // write JSON to file
         try {
             Jsoner.serialize(customer, writer);
@@ -44,10 +42,8 @@ public  class UserRepository {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         users.add(customer);
     }
-
     public static void addUserToRepo(User user) {
         writeToFile(user);
     }
@@ -87,9 +83,18 @@ public  class UserRepository {
         }
         else return null;
     }
-    public static User getUserByEmail(String email) {
-      User user1 =(User)users.stream().filter(user -> user.containsValue(email));
-      return user1;
+    public static void getUserByEmail(String email) {
+        JsonObject JasonObjectUser = (JsonObject) users.stream().filter(user -> user.containsValue(email)).findFirst().stream();
+
+        try {
+            String userEmail = JasonObjectUser.getPrivateKey("name");
+            System.out.println(userEmail);
+        } catch (NoSuchFieldException e) {
+
+        }
+
+
+        System.out.println(JasonObjectUser.toString());
     }
     public static void addUserToMap(int id, String token) {
         tokens.put(id,token);
