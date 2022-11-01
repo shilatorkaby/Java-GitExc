@@ -1,23 +1,24 @@
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
-
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 //email, name , password
 
-public class UserRepository {
-    Map<Integer,String> tokens =new HashMap<>();
+public  class UserRepository {
+    static Map<Integer,String> tokens =new HashMap<>();
+    static ArrayList<JsonObject> users = new ArrayList<>();
     public static void writeToFile(String email,String name, String password) {
-
         // create a writer
         BufferedWriter writer = null;
+        JsonObject customer;
         try {
             writer = Files.newBufferedWriter(Paths.get("User.json"));
         } catch (IOException e) {
@@ -25,7 +26,7 @@ public class UserRepository {
         }
 
         // create customer object
-        JsonObject customer = new JsonObject();
+        customer = new JsonObject();
         customer.put("email", email);
         customer.put("name", name);
         customer.put("password", password);
@@ -43,9 +44,17 @@ public class UserRepository {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        users.add(customer);
     }
 
+    public static void addUserToRepo(User user) {
+        writeToFile(user);
+    }
 
+    public static void writeToFile(User user){
+        writeToFile(user.getEmail(), user.getName(), user.getPassword());
+    }
     public static void readFromFile(String path)
     {
         try {
@@ -69,10 +78,23 @@ public class UserRepository {
             ex.printStackTrace();
         }
     }
+    //check if key exist in map, if yes-> retuern token.
+    //else return null
+    static String getUserToken(int key) {
+        if(tokens.containsKey(key))
+        {
+            return tokens.get(key);
+        }
+        else return null;
+    }
+    public static User getUserByEmail(String email) {
+      User user1 =(User)users.stream().filter(user -> user.containsValue(email));
+      return user1;
+    }
+    public static void addUserToMap(int id, String token) {
+        tokens.put(id,token);
+    }
 
-    public static void main(String[] args) {
-        readFromFile("C:\\Users\\שילת\\IdeaProjects\\Java-GitExc\\src\\main\\java\\file.json");
-
-        writeToFile("shilat@hi","shilat","1234");
+    public  void checkIfUserInMap(boolean b, boolean b1) {
     }
 }
