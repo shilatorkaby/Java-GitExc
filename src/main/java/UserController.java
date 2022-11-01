@@ -17,6 +17,5 @@ public class UserController {
     }
 
 
-
     //in the future - the user service will do any action only with attached token.
 }
