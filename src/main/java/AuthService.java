@@ -46,12 +46,6 @@ public class AuthService {
     public void createUser(String email, String name, String password) {
         User user = new User(email, password, name);
     }
-    public void createUser(String name, String password) {
-        User user = new User(password, name);
-    }
-    public void createUser(String email) {
-        User user = new User(email);
-    }
 
     public void addToMap(int id, String token) {
         UserRepository.addUserToMap(id,token);
