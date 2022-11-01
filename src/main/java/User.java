@@ -11,8 +11,16 @@ String password;
 
     ProjectRandom random = new ProjectRandom();
 
+
+
     public User(String email, String password, String name) {
         this.id = random.getRandomIdTo1m();
+        this.email = email;
+        this.password = password;
+        this.name = name;
+    }
+    public User(String email, String password, String name, int id) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;

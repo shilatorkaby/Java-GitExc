@@ -5,7 +5,9 @@ import java.util.concurrent.ThreadLocalRandom;
 //Can delete a user - via UserService
 public class UserService {
 
-    public void updateEmail(String email,String token) {
+    public void updateEmail(String oldMail,String newEmail,String token){
+        User user=UserRepository.getUserByEmail(oldMail);
+        user.setEmail(newEmail);
     }
     public void updateName(String name,String token) {
 
