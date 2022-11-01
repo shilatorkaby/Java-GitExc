@@ -27,15 +27,15 @@ public class AuthController {
         {
         return token;
         }
-        else return generateToken(user.getId());
+        else return createAndStoreToken(user.getId());
     }
 
     private User getUserByEmail(String email)
     {
-       return UserRepository.getUserByEmail(email);
+        UserRepository.getUserByEmail(email);
+        return null;
     }
-
-    private String generateToken(int id){
+    private String createAndStoreToken(int id){
         String token =String.valueOf(ThreadLocalRandom.current().nextInt(100000000, 999999999));
         authService.addToMap(id, token);
         return token;
