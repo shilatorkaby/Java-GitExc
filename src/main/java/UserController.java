@@ -1,6 +1,12 @@
 public class UserController {
-    void updateEmail(String email,String token) {
-
+    UserService userService= new UserService();
+    AuthController authController= new AuthController();
+    public void updateEmail(String oldMail,String newEmail,String password) {
+        String token = authController.loginToUser(oldMail,password);
+        if (authController.validateUser(oldMail,token)){
+            userService.updateEmail(oldMail,newEmail,token);
+        }
+        else throw new RuntimeException("Oops, that's not a match. please try again");
     }
     void updateName(String name,String token){
 

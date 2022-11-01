@@ -21,8 +21,8 @@ public class AuthController {
 //
     //instead boolean we will return token
     String loginToUser(String email, String password) {
-        User user = getUserByEmail(email);
-        String token =UserRepository.getUserToken(user.getId());
+        User user = UserRepository.getUserByEmail(email);
+        String token =authService.getUserToken(user.getId());
         if(token != null)
         {
         return token;
@@ -30,16 +30,16 @@ public class AuthController {
         else return createAndStoreToken(user.getId());
     }
 
-    private User getUserByEmail(String email)
-    {
-        UserRepository.getUserByEmail(email);
-        return null;
-    }
+
     private String createAndStoreToken(int id){
         String token =String.valueOf(ThreadLocalRandom.current().nextInt(100000000, 999999999));
         authService.addToMap(id, token);
         return token;
     }
+    public boolean validateUser(String oldMail, String token){
+        return authService.validateUser(oldMail,token);
+    }
+
 //    private boolean validRegister(){
 //    }
 //

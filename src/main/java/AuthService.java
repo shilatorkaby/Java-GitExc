@@ -30,10 +30,6 @@ public class AuthService {
     }
 
 
-    public boolean validateRequest(String email, String password) {
-        return false;
-    }
-
     public String getToken(User user){
         return UserRepository.getUserToken(user.id);
     }
@@ -43,11 +39,23 @@ public class AuthService {
         UserRepository.addUserToRepo(user);
     }
 
-    public void createUser(String email, String name, String password) {
-        User user = new User(email, password, name);
+    public void createUser(String email, String name, String password, int id) {
+        User user = new User(email, password, name, id);
     }
 
     public void addToMap(int id, String token) {
         UserRepository.addUserToMap(id,token);
     }
+    public String getUserToken(Integer id) {
+       return UserRepository.getUserToken(id);
+    }
+
+    public boolean validateUser(String oldMail, String token) {
+        User user = UserRepository.getUserByEmail(oldMail);
+        String userToken = UserRepository.getUserToken(user.getId());
+        System.out.println(userToken);
+        return (userToken == token);
+
+    }
+
 }
